@@ -1,5 +1,5 @@
 {
-  "updated_at_utc": "2026-11-27T15:37:44Z",
+  "updated_at_utc": "2026-11-27T23:38:12Z",
   "source": "aisstream",
   "positions": {
     "316002986": {
@@ -17,12 +17,12 @@
       "mmsi": "316005377",
       "vessel_id": "ccgs-cape-storm",
       "lat": 43.30025,
-      "lon": -79.803,
+      "lon": -79.80299,
       "sog": 0.0,
-      "cog": 232.5,
-      "heading": 243,
+      "cog": 214.8,
+      "heading": 245,
       "nav_status": "Moored",
-      "timestamp_utc": "2026-11-27T15:29:49Z"
+      "timestamp_utc": "2026-11-27T23:38:49Z"
     },
     "316017163": {
       "mmsi": "316017163",
