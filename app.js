@@ -387,6 +387,17 @@
     populateEquipList("drawer-eq-navigation", v.equipment?.navigation);
     populateEquipList("drawer-eq-comms", v.equipment?.communications);
 
+    const vfLink = document.getElementById("drawer-vf-link");
+    if (vfLink) {
+      if (v.mmsi) {
+        vfLink.href = `https://www.vesselfinder.com/vessels/details/${encodeURIComponent(v.mmsi)}`;
+        vfLink.hidden = false;
+      } else {
+        vfLink.removeAttribute("href");
+        vfLink.hidden = true;
+      }
+    }
+
     const fdatLink = document.getElementById("drawer-fdat-link");
     fdatLink.href = v.source_url;
   }
