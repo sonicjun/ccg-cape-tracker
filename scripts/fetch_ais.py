@@ -55,7 +55,6 @@ def parse_aisstream_timestamp(raw_ts: str | None) -> str:
     """Normalize AISStream MetaData.time_utc into ISO-8601 UTC string."""
     if not raw_ts:
         return iso_utc(datetime.now(timezone.utc))
-    # Example: "2026-11-27 14:10:05.123456789 +0000 UTC"
     m = re.match(r"^(\d{4}-\d{2}-\d{2})[T ](\d{2}:\d{2}:\d{2})", raw_ts.strip())
     if m:
         return f"{m.group(1)}T{m.group(2)}Z"
@@ -65,7 +64,7 @@ def parse_aisstream_timestamp(raw_ts: str | None) -> str:
 def load_fleet(vessels_path: Path) -> list[dict[str, Any]]:
     if not vessels_path.exists():
         raise FileNotFoundError(f"Fleet file not found: {vessels_path}")
-    return json.loads(vessels_path.read_text(encoding="utf-8"))
+    return json.loads(vessels_path.read_text(encoding="utf-8-sig"))
 
 
 def load_existing_positions(positions_path: Path) -> dict[str, Any]:
@@ -73,7 +72,7 @@ def load_existing_positions(positions_path: Path) -> dict[str, Any]:
     if not positions_path.exists():
         return {"updated_at_utc": None, "source": "aisstream", "positions": {}}
     try:
-        data = json.loads(positions_path.read_text(encoding="utf-8"))
+        data = json.loads(positions_path.read_text(encoding="utf-8-sig"))
         if isinstance(data, dict) and isinstance(data.get("positions"), dict):
             return data
     except Exception as exc:
@@ -107,8 +106,10 @@ async def collect_live_ais(
     }
 
     updates: dict[str, dict[str, Any]] = {}
+    rx_frames = 0
     loop = asyncio.get_running_loop()
-    deadline = loop.time() + duration_sec
+    hard_deadline = loop.time() + duration_sec + 90
+    listen_deadline: float | None = None
 
     logger.info(
         "Connecting to %s (compression=deflate, MMSIs=%d, window=%ds)...",
@@ -117,24 +118,28 @@ async def collect_live_ais(
         duration_sec,
     )
 
-    while loop.time() < deadline:
-        remaining = deadline - loop.time()
-        if remaining <= 1.0:
+    while loop.time() < hard_deadline:
+        if listen_deadline is not None and loop.time() >= listen_deadline:
             break
         try:
             async with websockets.connect(
                 AISSTREAM_URL,
                 compression="deflate",  # Enables permessage-deflate extension
                 ping_interval=20,
-                ping_timeout=20,
-                open_timeout=15,
+                ping_timeout=30,
+                open_timeout=45,
                 close_timeout=5,
             ) as ws:
                 await ws.send(json.dumps(subscribe_payload))
-                logger.info("Subscribed to AISStream PositionReport feed.")
+                if listen_deadline is None:
+                    listen_deadline = min(hard_deadline, loop.time() + duration_sec)
+                logger.info(
+                    "Subscribed to AISStream PositionReport feed (listening for %.0fs)...",
+                    max(0.0, listen_deadline - loop.time()),
+                )
 
                 while True:
-                    wait_for = deadline - loop.time()
+                    wait_for = listen_deadline - loop.time()
                     if wait_for <= 0:
                         break
                     try:
@@ -142,6 +147,7 @@ async def collect_live_ais(
                     except asyncio.TimeoutError:
                         break
 
+                    rx_frames += 1
                     if isinstance(raw_msg, bytes):
                         raw_msg = raw_msg.decode("utf-8", errors="replace")
 
@@ -192,7 +198,7 @@ async def collect_live_ais(
                     )
 
                     nav_code = int(pr.get("NavigationalStatus", 15))
-                    nav_status = NAV_STATUS_MAP.get(nav_code, "Undefined")
+                    nav_status = NAV_STATUS_MAP.get(nav_code, "Undefined" if msg_type == "PositionReport" else "Active (Class B)")
                     ts_utc = parse_aisstream_timestamp(meta.get("time_utc"))
 
                     vessel = mmsi_to_vessel[mmsi_val]
@@ -221,13 +227,19 @@ async def collect_live_ais(
         except RuntimeError:
             raise
         except Exception as exc:
-            left = deadline - loop.time()
-            if left <= 3.0:
+            active_end = listen_deadline if listen_deadline is not None else hard_deadline
+            left = active_end - loop.time()
+            if left <= 5.0:
                 logger.warning("Stream ended near window completion: %s", exc)
                 break
-            logger.warning("WebSocket interrupted (%s); reconnecting (%.0fs left)...", exc, left)
-            await asyncio.sleep(min(3.0, left))
+            logger.warning("WebSocket interrupted (%s); reconnecting in 6s (%.0fs left)...", exc, left)
+            await asyncio.sleep(min(6.0, left))
 
+    logger.info(
+        "Completed AISStream window: %d AIS message(s) received across %d unique Cape Class vessel(s).",
+        rx_frames,
+        len(updates),
+    )
     return updates
 
 
@@ -235,15 +247,9 @@ def generate_mock_positions(vessels: list[dict[str, Any]], now: datetime) -> dic
     """
     Generate realistic maritime mock telemetry across Atlantic (Halifax/PEI/NL),
     Central (Great Lakes/St. Lawrence), and Western (Vancouver Island/BC) waters.
-    Exercises all 3 status tiers:
-      - Active / Recent (< 2h): underway patrols + active moored vessels
-      - Last Known (2h - 7d): coastal patrols & station moorings
-      - Home Port Fallback (> 7d or no AIS record)
     """
-    # Explicit offshore/channel patrol scenarios keyed by vessel id
     scenarios: dict[str, dict[str, Any]] = {
         # --- ACTIVE / RECENT (< 2 hours) ---
-        # Atlantic: Underway near Halifax Harbour approaches, Northumberland Strait, Gulf of St. Lawrence
         "ccgs-cape-spry": {
             "lat": 44.4820, "lon": -63.4650, "sog": 19.4, "cog": 158.0, "heading": 160,
             "nav_status": "Under way using engine", "age_minutes": 6,
@@ -256,7 +262,6 @@ def generate_mock_positions(vessels: list[dict[str, Any]], now: datetime) -> dic
             "lat": 50.7450, "lon": -57.4410, "sog": 21.0, "cog": 312.0, "heading": 310,
             "nav_status": "Under way using engine", "age_minutes": 22,
         },
-        # Central: Underway on Lake Ontario, Lake Huron/Georgian Bay, Lake Erie, St. Lawrence Estuary
         "ccgs-cape-storm": {
             "lat": 43.3140, "lon": -79.1980, "sog": 18.7, "cog": 38.0, "heading": 40,
             "nav_status": "Under way using engine", "age_minutes": 8,
@@ -277,7 +282,6 @@ def generate_mock_positions(vessels: list[dict[str, Any]], now: datetime) -> dic
             "lat": 42.9980, "lon": -82.4290, "sog": 0.0, "cog": 182.0, "heading": 182,
             "nav_status": "Moored", "age_minutes": 34,
         },
-        # Western: Underway around Vancouver Island (Tofino, Victoria/Juan de Fuca, Bamfield, Campbell River)
         "ccgs-cape-ann": {
             "lat": 49.0860, "lon": -125.9840, "sog": 20.6, "cog": 232.0, "heading": 230,
             "nav_status": "Under way using engine", "age_minutes": 4,
@@ -302,66 +306,65 @@ def generate_mock_positions(vessels: list[dict[str, Any]], now: datetime) -> dic
         # --- LAST KNOWN (2 hours to 7 days) ---
         "ccgs-cape-fox": {
             "lat": 49.1180, "lon": -58.4120, "sog": 8.4, "cog": 280.0, "heading": 278,
-            "nav_status": "Under way using engine", "age_minutes": 60 * 4 + 15,  # ~4h ago
+            "nav_status": "Under way using engine", "age_minutes": 60 * 4 + 15,
         },
         "ccgs-cap-rozier": {
             "lat": 49.0120, "lon": -64.3550, "sog": 0.0, "cog": 45.0, "heading": None,
-            "nav_status": "Moored", "age_minutes": 60 * 7 + 30,  # ~7h ago
+            "nav_status": "Moored", "age_minutes": 60 * 7 + 30,
         },
         "ccgs-cap-tourmente": {
             "lat": 48.4920, "lon": -68.5320, "sog": 0.0, "cog": 310.0, "heading": 310,
-            "nav_status": "Moored", "age_minutes": 60 * 14,  # 14h ago
+            "nav_status": "Moored", "age_minutes": 60 * 14,
         },
         "ccgs-cape-discovery": {
             "lat": 43.7510, "lon": -81.7520, "sog": 10.5, "cog": 195.0, "heading": 195,
-            "nav_status": "Under way using engine", "age_minutes": 60 * 19,  # 19h ago
+            "nav_status": "Under way using engine", "age_minutes": 60 * 19,
         },
         "ccgs-cape-dundas": {
             "lat": 42.0620, "lon": -83.1280, "sog": 0.0, "cog": 175.0, "heading": None,
-            "nav_status": "Moored", "age_minutes": 60 * 28,  # 1d 4h ago
+            "nav_status": "Moored", "age_minutes": 60 * 28,
         },
         "ccgs-cape-edensaw": {
             "lat": 43.3010, "lon": -79.7950, "sog": 0.0, "cog": 120.0, "heading": 120,
-            "nav_status": "Moored", "age_minutes": 60 * 39,  # 1d 15h ago
+            "nav_status": "Moored", "age_minutes": 60 * 39,
         },
         "ccgs-cape-rescue": {
             "lat": 42.7690, "lon": -80.1980, "sog": 6.2, "cog": 148.0, "heading": 150,
-            "nav_status": "Under way using engine", "age_minutes": 60 * 52,  # 2d 4h ago
+            "nav_status": "Under way using engine", "age_minutes": 60 * 52,
         },
         "ccgs-cape-mercy": {
             "lat": 43.9480, "lon": -78.1650, "sog": 0.0, "cog": 0.0, "heading": None,
-            "nav_status": "Moored", "age_minutes": 60 * 76,  # 3d 4h ago
+            "nav_status": "Moored", "age_minutes": 60 * 76,
         },
         "ccgs-cape-caution": {
             "lat": 49.8740, "lon": -124.5680, "sog": 0.0, "cog": 212.0, "heading": 212,
-            "nav_status": "Moored", "age_minutes": 60 * 5 + 20,  # 5h ago
+            "nav_status": "Moored", "age_minutes": 60 * 5 + 20,
         },
         "ccgs-cape-cockburn": {
             "lat": 49.3550, "lon": -124.3510, "sog": 0.1, "cog": 32.0, "heading": 32,
-            "nav_status": "Moored", "age_minutes": 60 * 26,  # 1d 2h ago
+            "nav_status": "Moored", "age_minutes": 60 * 26,
         },
         "ccgs-cape-kuper": {
             "lat": 48.8510, "lon": -123.4890, "sog": 9.8, "cog": 134.0, "heading": 135,
-            "nav_status": "Under way using engine", "age_minutes": 60 * 64,  # 2d 16h ago
+            "nav_status": "Under way using engine", "age_minutes": 60 * 64,
         },
         "ccgs-cape-sutil": {
             "lat": 50.7280, "lon": -127.4820, "sog": 0.0, "cog": 15.0, "heading": None,
-            "nav_status": "Moored", "age_minutes": 60 * 125,  # 5d 5h ago
+            "nav_status": "Moored", "age_minutes": 60 * 125,
         },
 
         # --- STALE (> 7 days -> triggers Home Port Fallback) ---
-        # Remaining vessels have no entry in positions.json (also triggering Home Port Fallback)
         "ccgs-cape-chaillon": {
             "lat": 48.4192, "lon": -89.2189, "sog": 0.0, "cog": 0.0, "heading": None,
-            "nav_status": "Moored", "age_minutes": 60 * 24 * 11,  # 11d ago (winter layup)
+            "nav_status": "Moored", "age_minutes": 60 * 24 * 11,
         },
         "ccgs-cape-palmerston": {
             "lat": 54.3122, "lon": -130.3275, "sog": 0.0, "cog": 0.0, "heading": None,
-            "nav_status": "Moored", "age_minutes": 60 * 24 * 16,  # 16d ago
+            "nav_status": "Moored", "age_minutes": 60 * 24 * 16,
         },
         "ccgs-cap-aupaluk": {
             "lat": 46.8169, "lon": -71.2003, "sog": 0.0, "cog": 0.0, "heading": None,
-            "nav_status": "Moored", "age_minutes": 60 * 24 * 21,  # 21d ago
+            "nav_status": "Moored", "age_minutes": 60 * 24 * 21,
         },
     }
 
@@ -439,16 +442,13 @@ def main() -> int:
             return 1
         updates = asyncio.run(collect_live_ais(api_key, mmsi_to_vessel, args.duration))
         source = "aisstream"
-        # Do not carry simulated --mock coordinates into live production AIS cache
         if cache.get("source") == "mock":
             logger.info("Clearing prior --mock simulation cache before storing live AIS data.")
             merged_positions = {}
 
-    # Merge only vessels that reported during this run; never delete older cached entries
     for mmsi, report in updates.items():
         merged_positions[mmsi] = report
 
-    # Sort keys deterministically for clean git diffs
     sorted_positions = {k: merged_positions[k] for k in sorted(merged_positions.keys())}
 
     output_payload = {
