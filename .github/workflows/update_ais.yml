@@ -1,0 +1,57 @@
+name: Update AIS Vessel Positions
+
+on:
+  schedule:
+    - cron: "*/30 * * * *"
+  workflow_dispatch:
+    inputs:
+      duration:
+        description: "AISStream listening window in seconds"
+        required: false
+        default: "90"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-ais-positions
+  cancel-in-progress: false
+
+jobs:
+  update-ais:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+
+      - name: Install Python dependencies
+        run: pip install -r requirements.txt
+
+      - name: Fetch latest AIS positions from AISStream.io
+        env:
+          AISSTREAM_API_KEY: ${{ secrets.AISSTREAM_API_KEY }}
+        run: |
+          DURATION="${{ github.event.inputs.duration || '90' }}"
+          python scripts/fetch_ais.py --duration "$DURATION"
+
+      - name: Commit and push data/positions.json if modified
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/positions.json
+          if git diff --cached --quiet; then
+            echo "No changes to data/positions.json; skipping commit."
+          else
+            TIMESTAMP=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+            git commit -m "chore(ais): update CCG Cape Class positions (${TIMESTAMP}) [skip ci]"
+            git pull --rebase origin "${GITHUB_REF_NAME}"
+            git push origin HEAD:"${GITHUB_REF_NAME}"
+          fi

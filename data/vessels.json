@@ -1,0 +1,1498 @@
+[
+  {
+    "id": "ccgs-cap-aupaluk",
+    "name": "CCGS Cap Aupaluk",
+    "mmsi": "316017158",
+    "region": "Central",
+    "home_port": "Québec, QC",
+    "home_lat": 46.8169,
+    "home_lon": -71.2003,
+    "year_built": 2011,
+    "specs": {
+      "length_m": 14.6,
+      "max_speed_kt": 25,
+      "range_nm": 200,
+      "crew": 4
+    },
+    "equipment": {
+      "propulsion": [
+        "Main Engines: (2) x Caterpillar - C12",
+        "Drive: Geared Diesel (678 kW)",
+        "Propellers: (2) x Fixed Pitch",
+        "Generators: (2) x Shaft Generator",
+        "Generators: (2) x Alternator"
+      ],
+      "navigation": [
+        "Radar: Raymarine - E Series - X Band",
+        "ECS: (1) x ICAN Aldebaran II",
+        "Autopilot: (1) x Comnav 2001",
+        "GPS: (1) x Magnavox - MX400B",
+        "GPS: (1) x SAAB - R4 (AIS)",
+        "Gyrocompass: (1) x Sperry - SR2100",
+        "Depth Sounder: (1) x Si-Tex Koden - CVS 118",
+        "Depth Sounder: (1) x Datamarine - 3000",
+        "Depth Sounder: (1) x Raymarine - ST70"
+      ],
+      "communications": [
+        "VHF FM: (1) x Motorola - XTL-5000",
+        "VHF FM: (2) x Icom - IC-M604",
+        "VHF AM (Aviation/SAR): (1) x Bendix-King - KY196",
+        "HF Radio: (1) x Motorola - Micom",
+        "VHF Direction Finder: (1) x OAR - Cubic DF4400"
+      ]
+    },
+    "source_url": "https://inter-j02.dfo-mpo.gc.ca/fdat/vessels/10"
+  },
+  {
+    "id": "ccgs-cap-breton",
+    "name": "CCGS Cap Breton",
+    "mmsi": "316004847",
+    "region": "Atlantic",
+    "home_port": "Shippagan, NB",
+    "home_lat": 47.7442,
+    "home_lon": -64.7056,
+    "year_built": 2004,
+    "specs": {
+      "length_m": 14.6,
+      "max_speed_kt": 25,
+      "range_nm": 200,
+      "crew": 4
+    },
+    "equipment": {
+      "propulsion": [
+        "Main Engines: (2) x Caterpillar - 3196",
+        "Drive: Geared Diesel (671 kW)",
+        "Propellers: (2) x Fixed Pitch",
+        "Generators: (2) x Shaft Generator",
+        "Generators: (2) x Alternator"
+      ],
+      "navigation": [
+        "Radar: Furuno - 1942 - X Band",
+        "ECS: (1) x ICAN Aldebaran II",
+        "Autopilot: (1) x Comnav 2001",
+        "GPS: (1) x Magnavox - MX400B",
+        "Gyrocompass: (1) x Anschutz - Gyrostar II",
+        "Depth Sounder: (1) x Si-Tex Koden - CVS 106",
+        "Depth Sounder: (1) x Datamarine - 3000"
+      ],
+      "communications": [
+        "VHF FM: (1) x Ross - DSC 500",
+        "VHF AM (Aviation/SAR): (1) x Bendix-King - KY196",
+        "HF Radio: (1) x Motorola - Micom",
+        "VHF Direction Finder: (1) x JMC - DF5500"
+      ]
+    },
+    "source_url": "https://inter-j02.dfo-mpo.gc.ca/fdat/vessels/11"
+  },
+  {
+    "id": "ccgs-cap-nord",
+    "name": "CCGS Cap Nord",
+    "mmsi": "316004876",
+    "region": "Atlantic",
+    "home_port": "Summerside, PE",
+    "home_lat": 46.3917,
+    "home_lon": -63.7897,
+    "year_built": 2003,
+    "specs": {
+      "length_m": 14.6,
+      "max_speed_kt": 25,
+      "range_nm": 200,
+      "crew": 4
+    },
+    "equipment": {
+      "propulsion": [
+        "Main Engines: (2) x Caterpillar - 3196",
+        "Drive: Geared Diesel (671 kW)",
+        "Propellers: (2) x Fixed Pitch",
+        "Generators: (2) x Shaft Generator",
+        "Generators: (2) x Alternator"
+      ],
+      "navigation": [
+        "Radar: Furuno - 1942 - X Band",
+        "ECS: (1) x ICAN Aldebaran II",
+        "Autopilot: (1) x Comnav 2001",
+        "GPS: (1) x Magnavox - MX400B",
+        "GPS: (1) x SAAB - R4 (AIS)",
+        "Gyrocompass: (1) x Anschutz - Gyrostar II",
+        "Depth Sounder: (1) x Si-Tex Koden - CVS 106",
+        "Depth Sounder: (1) x Datamarine - 3000"
+      ],
+      "communications": [
+        "VHF FM: (1) x Ross - DSC 500",
+        "VHF AM (Aviation/SAR): (1) x Bendix-King - KY196",
+        "HF Radio: (1) x Motorola - Micom",
+        "VHF Direction Finder: (1) x JMC - DF5500"
+      ]
+    },
+    "source_url": "https://inter-j02.dfo-mpo.gc.ca/fdat/vessels/14"
+  },
+  {
+    "id": "ccgs-cap-perce",
+    "name": "CCGS Cap Percé",
+    "mmsi": "316013913",
+    "region": "Central",
+    "home_port": "Kegaska, QC",
+    "home_lat": 50.1847,
+    "home_lon": -61.2661,
+    "year_built": 2005,
+    "specs": {
+      "length_m": 14.6,
+      "max_speed_kt": 25,
+      "range_nm": 200,
+      "crew": 4
+    },
+    "equipment": {
+      "propulsion": [
+        "Main Engines: (2) x Caterpillar - 3196",
+        "Drive: Geared Diesel (671 kW)",
+        "Propellers: (2) x Fixed Pitch",
+        "Generators: (2) x Shaft Generator",
+        "Generators: (2) x Alternator"
+      ],
+      "navigation": [
+        "Radar: Furuno - 1942 - X Band",
+        "ECS: (1) x ICAN Aldebaran II",
+        "Autopilot: (1) x Comnav 2001",
+        "GPS: (1) x Magnavox - MX400B",
+        "Gyrocompass: (1) x Anschutz - Gyrostar II",
+        "Depth Sounder: (1) x Si-Tex Koden - CVS 106",
+        "Depth Sounder: (1) x Datamarine - 3000"
+      ],
+      "communications": [
+        "VHF FM: (1) x Ross - DSC 500",
+        "VHF AM (Aviation/SAR): (1) x Bendix-King - KY196",
+        "HF Radio: (1) x Motorola - Micom",
+        "VHF Direction Finder: (1) x JMC - DF5500"
+      ]
+    },
+    "source_url": "https://inter-j02.dfo-mpo.gc.ca/fdat/vessels/15"
+  },
+  {
+    "id": "ccgs-cap-rozier",
+    "name": "CCGS Cap Rozier",
+    "mmsi": "316005759",
+    "region": "Central",
+    "home_port": "Rivière-au-Renard, QC",
+    "home_lat": 48.9972,
+    "home_lon": -64.3842,
+    "year_built": 2002,
+    "specs": {
+      "length_m": 14.6,
+      "max_speed_kt": 25,
+      "range_nm": 200,
+      "crew": 4
+    },
+    "equipment": {
+      "propulsion": [
+        "Main Engines: (2) x Caterpillar - 3196",
+        "Drive: Geared Diesel (671 kW)",
+        "Propellers: (2) x Fixed Pitch",
+        "Generators: (2) x Shaft Generator",
+        "Generators: (2) x Alternator"
+      ],
+      "navigation": [
+        "Radar: Furuno - 1942 - X Band",
+        "ECS: (1) x ICAN Aldebaran II",
+        "Autopilot: (1) x Comnav 2001",
+        "GPS: (1) x Magnavox - MX400B",
+        "Gyrocompass: (1) x Anschutz - Gyrostar II",
+        "Depth Sounder: (1) x Si-Tex Koden - CVS 106",
+        "Depth Sounder: (1) x Datamarine - 3000"
+      ],
+      "communications": [
+        "VHF FM: (1) x Ross - DSC 500",
+        "VHF AM (Aviation/SAR): (1) x Bendix-King - KY196",
+        "HF Radio: (1) x Motorola - Micom",
+        "VHF Direction Finder: (1) x JMC - DF5500"
+      ]
+    },
+    "source_url": "https://inter-j02.dfo-mpo.gc.ca/fdat/vessels/16"
+  },
+  {
+    "id": "ccgs-cap-tourmente",
+    "name": "CCGS Cap Tourmente",
+    "mmsi": "316006672",
+    "region": "Central",
+    "home_port": "Rimouski, QC",
+    "home_lat": 48.4789,
+    "home_lon": -68.5156,
+    "year_built": 2005,
+    "specs": {
+      "length_m": 14.6,
+      "max_speed_kt": 25,
+      "range_nm": 200,
+      "crew": 4
+    },
+    "equipment": {
+      "propulsion": [
+        "Main Engines: (2) x Caterpillar - 3196",
+        "Drive: Geared Diesel (671 kW)",
+        "Propellers: (2) x Fixed Pitch",
+        "Generators: (2) x Shaft Generator",
+        "Generators: (2) x Alternator"
+      ],
+      "navigation": [
+        "Radar: Furuno - 1942 - X Band",
+        "ECS: (1) x ICAN Aldebaran II",
+        "Autopilot: (1) x Comnav 2001",
+        "GPS: (1) x Magnavox - MX400B",
+        "Gyrocompass: (1) x Anschutz - Gyrostar II",
+        "Depth Sounder: (1) x Si-Tex Koden - CVS 106",
+        "Depth Sounder: (1) x Datamarine - 3000"
+      ],
+      "communications": [
+        "VHF FM: (1) x Ross - DSC 500",
+        "VHF AM (Aviation/SAR): (1) x Bendix-King - KY196",
+        "HF Radio: (1) x Motorola - Micom",
+        "VHF Direction Finder: (1) x JMC - DF5500"
+      ]
+    },
+    "source_url": "https://inter-j02.dfo-mpo.gc.ca/fdat/vessels/17"
+  },
+  {
+    "id": "ccgs-cap-d-espoir",
+    "name": "CCGS Cap d'Espoir",
+    "mmsi": "316006673",
+    "region": "Central",
+    "home_port": "Tadoussac, QC",
+    "home_lat": 48.1419,
+    "home_lon": -69.7181,
+    "year_built": 2005,
+    "specs": {
+      "length_m": 14.6,
+      "max_speed_kt": 25,
+      "range_nm": 200,
+      "crew": 4
+    },
+    "equipment": {
+      "propulsion": [
+        "Main Engines: (2) x Caterpillar - 3196",
+        "Drive: Geared Diesel (671 kW)",
+        "Propellers: (2) x Fixed Pitch",
+        "Generators: (2) x Shaft Generator",
+        "Generators: (2) x Alternator"
+      ],
+      "navigation": [
+        "Radar: Furuno - 1942 - X Band",
+        "ECS: (1) x ICAN Aldebaran II",
+        "Autopilot: (1) x Comnav 2001",
+        "GPS: (1) x Magnavox - MX400B",
+        "Gyrocompass: (1) x Anschutz - Gyrostar II",
+        "Depth Sounder: (1) x Si-Tex Koden - CVS 106",
+        "Depth Sounder: (1) x Datamarine - 3000"
+      ],
+      "communications": [
+        "VHF FM: (1) x Ross - DSC 500",
+        "VHF AM (Aviation/SAR): (1) x Bendix-King - KY196",
+        "HF Radio: (1) x Motorola - Micom",
+        "VHF Direction Finder: (1) x JMC - DF5500"
+      ]
+    },
+    "source_url": "https://inter-j02.dfo-mpo.gc.ca/fdat/vessels/13"
+  },
+  {
+    "id": "ccgs-cap-de-rabast",
+    "name": "CCGS Cap de Rabast",
+    "mmsi": "316005758",
+    "region": "Central",
+    "home_port": "Havre-Saint-Pierre, QC",
+    "home_lat": 50.2389,
+    "home_lon": -63.5986,
+    "year_built": 2002,
+    "specs": {
+      "length_m": 14.6,
+      "max_speed_kt": 25,
+      "range_nm": 200,
+      "crew": 4
+    },
+    "equipment": {
+      "propulsion": [
+        "Main Engines: (2) x Caterpillar - 3196",
+        "Drive: Geared Diesel (671 kW)",
+        "Propellers: (2) x Fixed Pitch",
+        "Generators: (2) x Shaft Generator",
+        "Generators: (2) x Alternator"
+      ],
+      "navigation": [
+        "Radar: Furuno - 1942 - X Band",
+        "ECS: (1) x ICAN Aldebaran II",
+        "Autopilot: (1) x Comnav 2001",
+        "GPS: (1) x Magnavox - MX400B",
+        "Gyrocompass: (1) x Anschutz - Gyrostar II",
+        "Depth Sounder: (1) x Si-Tex Koden - CVS 106",
+        "Depth Sounder: (1) x Datamarine - 3000"
+      ],
+      "communications": [
+        "VHF FM: (1) x Ross - DSC 500",
+        "VHF AM (Aviation/SAR): (1) x Bendix-King - KY196",
+        "HF Radio: (1) x Motorola - Micom",
+        "VHF Direction Finder: (1) x JMC - DF5500"
+      ]
+    },
+    "source_url": "https://inter-j02.dfo-mpo.gc.ca/fdat/vessels/12"
+  },
+  {
+    "id": "ccgs-cape-ann",
+    "name": "CCGS Cape Ann",
+    "mmsi": "316005204",
+    "region": "Western",
+    "home_port": "Tofino, BC",
+    "home_lat": 49.153,
+    "home_lon": -125.9066,
+    "year_built": 2004,
+    "specs": {
+      "length_m": 14.6,
+      "max_speed_kt": 25,
+      "range_nm": 200,
+      "crew": 4
+    },
+    "equipment": {
+      "propulsion": [
+        "Main Engines: (2) x Caterpillar - 3196",
+        "Drive: Geared Diesel (671 kW)",
+        "Propellers: (2) x Fixed Pitch",
+        "Generators: (2) x Shaft Generator",
+        "Generators: (2) x Alternator"
+      ],
+      "navigation": [
+        "Radar: Furuno - 1942 - X Band",
+        "ECS: (1) x ICAN Aldebaran II",
+        "Autopilot: (1) x Comnav 2001",
+        "GPS: (1) x Magnavox - MX400B",
+        "Gyrocompass: (1) x Anschutz - Gyrostar II",
+        "Depth Sounder: (1) x Si-Tex Koden - CVS 106",
+        "Depth Sounder: (1) x Datamarine - 3000"
+      ],
+      "communications": [
+        "VHF FM: (1) x Ross - DSC 500",
+        "VHF AM (Aviation/SAR): (1) x Bendix-King - KY196",
+        "HF Radio: (1) x Motorola - Micom",
+        "VHF Direction Finder: (1) x JMC - DF5500"
+      ]
+    },
+    "source_url": "https://inter-j02.dfo-mpo.gc.ca/fdat/vessels/19"
+  },
+  {
+    "id": "ccgs-cape-calvert",
+    "name": "CCGS Cape Calvert",
+    "mmsi": "316001481",
+    "region": "Western",
+    "home_port": "Victoria, BC",
+    "home_lat": 48.4251,
+    "home_lon": -123.3879,
+    "year_built": 1999,
+    "specs": {
+      "length_m": 14.6,
+      "max_speed_kt": 25,
+      "range_nm": 200,
+      "crew": 4
+    },
+    "equipment": {
+      "propulsion": [
+        "Main Engines: (2) x Caterpillar - 3196",
+        "Drive: Geared Diesel (671 kW)",
+        "Propellers: (2) x Fixed Pitch",
+        "Generators: (2) x Shaft Generator",
+        "Generators: (2) x Alternator"
+      ],
+      "navigation": [
+        "Radar: Furuno - 1942 - X Band",
+        "ECS: (1) x ICAN Aldebaran II",
+        "Autopilot: (1) x Comnav 2001",
+        "GPS: (1) x Magnavox - MX400B",
+        "Gyrocompass: (1) x Anschutz - Gyrostar II",
+        "Depth Sounder: (1) x Si-Tex Koden - CVS 106",
+        "Depth Sounder: (1) x Datamarine - 3000"
+      ],
+      "communications": [
+        "VHF FM: (1) x Ross - DSC 500",
+        "VHF AM (Aviation/SAR): (1) x Bendix-King - KY196",
+        "HF Radio: (1) x Motorola - Micom",
+        "VHF Direction Finder: (1) x JMC - DF5500"
+      ]
+    },
+    "source_url": "https://inter-j02.dfo-mpo.gc.ca/fdat/vessels/20"
+  },
+  {
+    "id": "ccgs-cape-caution",
+    "name": "CCGS Cape Caution",
+    "mmsi": "316005337",
+    "region": "Western",
+    "home_port": "Powell River, BC",
+    "home_lat": 49.8781,
+    "home_lon": -124.5547,
+    "year_built": 2004,
+    "specs": {
+      "length_m": 14.6,
+      "max_speed_kt": 25,
+      "range_nm": 200,
+      "crew": 4
+    },
+    "equipment": {
+      "propulsion": [
+        "Main Engines: (2) x Caterpillar - 3196",
+        "Drive: Geared Diesel (671 kW)",
+        "Propellers: (2) x Fixed Pitch",
+        "Generators: (2) x Shaft Generator",
+        "Generators: (2) x Alternator"
+      ],
+      "navigation": [
+        "Radar: Furuno - 1942 - X Band",
+        "ECS: (1) x ICAN Aldebaran II",
+        "Autopilot: (1) x Comnav 2001",
+        "GPS: (1) x Magnavox - MX400B",
+        "Gyrocompass: (1) x Anschutz - Gyrostar II",
+        "Depth Sounder: (1) x Si-Tex Koden - CVS 106",
+        "Depth Sounder: (1) x Datamarine - 3000"
+      ],
+      "communications": [
+        "VHF FM: (1) x Ross - DSC 500",
+        "VHF AM (Aviation/SAR): (1) x Bendix-King - KY196",
+        "HF Radio: (1) x Motorola - Micom",
+        "VHF Direction Finder: (1) x JMC - DF5500"
+      ]
+    },
+    "source_url": "https://inter-j02.dfo-mpo.gc.ca/fdat/vessels/21"
+  },
+  {
+    "id": "ccgs-cape-chaillon",
+    "name": "CCGS Cape Chaillon",
+    "mmsi": "316005374",
+    "region": "Central",
+    "home_port": "Thunder Bay, ON",
+    "home_lat": 48.4192,
+    "home_lon": -89.2189,
+    "year_built": 2004,
+    "specs": {
+      "length_m": 14.6,
+      "max_speed_kt": 25,
+      "range_nm": 200,
+      "crew": 4
+    },
+    "equipment": {
+      "propulsion": [
+        "Main Engines: (2) x Caterpillar - 3196",
+        "Drive: Geared Diesel (671 kW)",
+        "Propellers: (2) x Fixed Pitch",
+        "Generators: (2) x Shaft Generator",
+        "Generators: (2) x Alternator"
+      ],
+      "navigation": [
+        "Radar: Furuno - 1942 - X Band",
+        "ECS: (1) x ICAN Aldebaran II",
+        "Autopilot: (1) x Comnav 2001",
+        "GPS: (1) x Magnavox - MX400B",
+        "Gyrocompass: (1) x Anschutz - Gyrostar II",
+        "Depth Sounder: (1) x Si-Tex Koden - CVS 106",
+        "Depth Sounder: (1) x Datamarine - 3000"
+      ],
+      "communications": [
+        "VHF FM: (1) x Ross - DSC 500",
+        "VHF AM (Aviation/SAR): (1) x Bendix-King - KY196",
+        "HF Radio: (1) x Motorola - Micom",
+        "VHF Direction Finder: (1) x JMC - DF5500"
+      ]
+    },
+    "source_url": "https://inter-j02.dfo-mpo.gc.ca/fdat/vessels/22"
+  },
+  {
+    "id": "ccgs-cape-cockburn",
+    "name": "CCGS Cape Cockburn",
+    "mmsi": "316003544",
+    "region": "Western",
+    "home_port": "French Creek, BC",
+    "home_lat": 49.3497,
+    "home_lon": -124.3592,
+    "year_built": 2003,
+    "specs": {
+      "length_m": 14.6,
+      "max_speed_kt": 25,
+      "range_nm": 200,
+      "crew": 4
+    },
+    "equipment": {
+      "propulsion": [
+        "Main Engines: (2) x Caterpillar - 3196",
+        "Drive: Geared Diesel (671 kW)",
+        "Propellers: (2) x Fixed Pitch",
+        "Generators: (2) x Shaft Generator",
+        "Generators: (2) x Alternator"
+      ],
+      "navigation": [
+        "Radar: Raymarine - E Series - X Band",
+        "ECS: (1) x ICAN Aldebaran II",
+        "Autopilot: (1) x Comnav 2001",
+        "GPS: (1) x SAAB - R4 (AIS)",
+        "Gyrocompass: (1) x Anschutz - Gyrostar II",
+        "Depth Sounder: (1) x Si-Tex Koden - CVS 108",
+        "Depth Sounder: (1) x Datamarine - 3000",
+        "Depth Sounder: (1) x Raymarine - ST70"
+      ],
+      "communications": [
+        "VHF FM: (1) x Ross - DSC 500",
+        "VHF FM: (1) x Icom - IC-M502",
+        "VHF FM: (1) x Motorola - Astro Spectra",
+        "VHF AM (Aviation/SAR): (1) x Bendix-King - KY196",
+        "HF Radio: (1) x Motorola - Micom",
+        "VHF Direction Finder: (1) x OAR - Cubic DF4400"
+      ]
+    },
+    "source_url": "https://inter-j02.dfo-mpo.gc.ca/fdat/vessels/23"
+  },
+  {
+    "id": "ccgs-cape-commodore",
+    "name": "CCGS Cape Commodore",
+    "mmsi": "316005376",
+    "region": "Central",
+    "home_port": "Tobermory, ON",
+    "home_lat": 45.2556,
+    "home_lon": -81.6653,
+    "year_built": 2004,
+    "specs": {
+      "length_m": 14.6,
+      "max_speed_kt": 25,
+      "range_nm": 200,
+      "crew": 4
+    },
+    "equipment": {
+      "propulsion": [
+        "Main Engines: (2) x Caterpillar - 3196",
+        "Drive: Geared Diesel (671 kW)",
+        "Propellers: (2) x Fixed Pitch",
+        "Generators: (2) x Shaft Generator",
+        "Generators: (2) x Alternator"
+      ],
+      "navigation": [
+        "Radar: Furuno - 1942 - X Band",
+        "ECS: (1) x ICAN Aldebaran II",
+        "Autopilot: (1) x Comnav 2001",
+        "GPS: (1) x Magnavox - MX400B",
+        "Gyrocompass: (1) x Anschutz - Gyrostar II",
+        "Depth Sounder: (1) x Si-Tex Koden - CVS 106",
+        "Depth Sounder: (1) x Datamarine - 3000"
+      ],
+      "communications": [
+        "VHF FM: (1) x Ross - DSC 500",
+        "VHF AM (Aviation/SAR): (1) x Bendix-King - KY196",
+        "HF Radio: (1) x Motorola - Micom",
+        "VHF Direction Finder: (1) x JMC - DF5500"
+      ]
+    },
+    "source_url": "https://inter-j02.dfo-mpo.gc.ca/fdat/vessels/24"
+  },
+  {
+    "id": "ccgs-cape-dauphin",
+    "name": "CCGS Cape Dauphin",
+    "mmsi": "316017161",
+    "region": "Western",
+    "home_port": "Campbell River, BC",
+    "home_lat": 50.0244,
+    "home_lon": -125.2442,
+    "year_built": 2010,
+    "specs": {
+      "length_m": 14.6,
+      "max_speed_kt": 25,
+      "range_nm": 200,
+      "crew": 4
+    },
+    "equipment": {
+      "propulsion": [
+        "Main Engines: (2) x Caterpillar - C12",
+        "Drive: Geared Diesel (671 kW)",
+        "Propellers: (2) x Fixed Pitch",
+        "Generators: (1) x Shaft Generator",
+        "Generators: (2) x Alternator"
+      ],
+      "navigation": [
+        "Radar: Raymarine - E Series - X Band",
+        "ECS: (1) x ICAN Aldebaran II",
+        "Autopilot: (1) x Comnav 2001",
+        "GPS: (1) x Magnavox - MX400B",
+        "Gyrocompass: (1) x Sperry - SR2100",
+        "Depth Sounder: (1) x Si-Tex Koden - CVS 106",
+        "Depth Sounder: (1) x Datamarine - 3000"
+      ],
+      "communications": [
+        "VHF FM: (1) x Ross - DSC 500",
+        "VHF FM: (2) x Icom - IC-M604",
+        "VHF FM: (1) x Motorola - XTL-5000",
+        "VHF AM (Aviation/SAR): (1) x Bendix-King - KY196",
+        "HF Radio: (1) x Motorola - Micom",
+        "VHF Direction Finder: (1) x OAR - Cubic DF4400"
+      ]
+    },
+    "source_url": "https://inter-j02.dfo-mpo.gc.ca/fdat/vessels/25"
+  },
+  {
+    "id": "ccgs-cape-discovery",
+    "name": "CCGS Cape Discovery",
+    "mmsi": "316002184",
+    "region": "Central",
+    "home_port": "Goderich, ON",
+    "home_lat": 43.7456,
+    "home_lon": -81.7258,
+    "year_built": 2004,
+    "specs": {
+      "length_m": 14.6,
+      "max_speed_kt": 25,
+      "range_nm": 200,
+      "crew": 4
+    },
+    "equipment": {
+      "propulsion": [
+        "Main Engines: (2) x Caterpillar - 3196",
+        "Drive: Geared Diesel (671 kW)",
+        "Propellers: (2) x Fixed Pitch",
+        "Generators: (2) x Shaft Generator",
+        "Generators: (2) x Alternator"
+      ],
+      "navigation": [
+        "Radar: Raymarine - E Series - X Band",
+        "ECS: (1) x ICAN Aldebaran II",
+        "Autopilot: (1) x Comnav 2001",
+        "GPS: (1) x SAAB - R4 (AIS)",
+        "Gyrocompass: (1) x Anschutz - Gyrostar II",
+        "Depth Sounder: (1) x Si-Tex Koden - CVS 108"
+      ],
+      "communications": [
+        "VHF FM: (1) x McMurdo - F1-DSC",
+        "VHF FM: (1) x Icom - IC-M502",
+        "VHF AM (Aviation/SAR): (1) x Bendix-King - KY196",
+        "HF Radio: (1) x Motorola - Micom",
+        "VHF Direction Finder: (1) x OAR - Cubic DF4400"
+      ]
+    },
+    "source_url": "https://inter-j02.dfo-mpo.gc.ca/fdat/vessels/26"
+  },
+  {
+    "id": "ccgs-cape-dundas",
+    "name": "CCGS Cape Dundas",
+    "mmsi": "316006894",
+    "region": "Central",
+    "home_port": "Amherstburg, ON",
+    "home_lat": 42.1039,
+    "home_lon": -83.1128,
+    "year_built": 2005,
+    "specs": {
+      "length_m": 14.6,
+      "max_speed_kt": 25,
+      "range_nm": 200,
+      "crew": 4
+    },
+    "equipment": {
+      "propulsion": [
+        "Main Engines: (2) x Caterpillar - 3196",
+        "Drive: Geared Diesel (671 kW)",
+        "Propellers: (2) x Fixed Pitch",
+        "Generators: (2) x Shaft Generator",
+        "Generators: (2) x Alternator"
+      ],
+      "navigation": [
+        "Radar: Raymarine - E Series - X Band",
+        "ECS: (1) x ICAN Aldebaran II",
+        "Autopilot: (1) x Comnav 2001",
+        "GPS: (1) x SAAB - R4 (AIS)",
+        "GPS: (1) x Magnavox - MX400B",
+        "Gyrocompass: (1) x Anschutz - Gyrostar",
+        "Depth Sounder: (1) x Si-Tex Koden - CVS 106",
+        "Depth Sounder: (1) x Datamarine - 3000"
+      ],
+      "communications": [
+        "VHF FM: (1) x Ross - DSC 500",
+        "VHF AM (Aviation/SAR): (1) x Bendix-King - KY196",
+        "HF Radio: (1) x Motorola - Micom",
+        "VHF Direction Finder: (1) x JMC - DF5500"
+      ]
+    },
+    "source_url": "https://inter-j02.dfo-mpo.gc.ca/fdat/vessels/27"
+  },
+  {
+    "id": "ccgs-cape-edensaw",
+    "name": "CCGS Cape Edensaw",
+    "mmsi": "316006713",
+    "region": "Central",
+    "home_port": "Burlington, ON",
+    "home_lat": 43.3003,
+    "home_lon": -79.7972,
+    "year_built": 2005,
+    "specs": {
+      "length_m": 14.6,
+      "max_speed_kt": 25,
+      "range_nm": 200,
+      "crew": 4
+    },
+    "equipment": {
+      "propulsion": [
+        "Main Engines: (2) x Caterpillar - 3196",
+        "Drive: Geared Diesel (671 kW)",
+        "Propellers: (2) x Fixed Pitch",
+        "Generators: (2) x Shaft Generator",
+        "Generators: (2) x Alternator"
+      ],
+      "navigation": [
+        "Radar: Furuno - 1942 - X Band",
+        "ECS: (1) x ICAN Aldebaran II",
+        "Autopilot: (1) x Comnav 2001",
+        "GPS: (1) x Magnavox - MX400B",
+        "Gyrocompass: (1) x Anschutz - Gyrostar II",
+        "Depth Sounder: (1) x Si-Tex Koden - CVS 106",
+        "Depth Sounder: (1) x Datamarine - 3000"
+      ],
+      "communications": [
+        "VHF FM: (1) x Ross - DSC 500",
+        "VHF AM (Aviation/SAR): (1) x Bendix-King - KY196",
+        "HF Radio: (1) x Motorola - Micom",
+        "VHF Direction Finder: (1) x JMC - DF5500"
+      ]
+    },
+    "source_url": "https://inter-j02.dfo-mpo.gc.ca/fdat/vessels/28"
+  },
+  {
+    "id": "ccgs-cape-farewell",
+    "name": "CCGS Cape Farewell",
+    "mmsi": "316003545",
+    "region": "Western",
+    "home_port": "Bella Bella, BC",
+    "home_lat": 52.1636,
+    "home_lon": -128.1436,
+    "year_built": 2003,
+    "specs": {
+      "length_m": 14.6,
+      "max_speed_kt": 25,
+      "range_nm": 200,
+      "crew": 4
+    },
+    "equipment": {
+      "propulsion": [
+        "Main Engines: (2) x Caterpillar - 3196",
+        "Generators: (2) x Shaft Generator",
+        "Generators: (2) x Alternator"
+      ],
+      "navigation": [
+        "Radar: Furuno - 1942 - X Band",
+        "ECS: (1) x ICAN Aldebaran II",
+        "Autopilot: (1) x Comnav 2001",
+        "GPS: (1) x Magnavox - MX400B",
+        "Gyrocompass: (1) x Anschutz - Gyrostar II",
+        "Depth Sounder: (1) x Si-Tex Koden - CVS 106",
+        "Depth Sounder: (1) x Datamarine - 3000"
+      ],
+      "communications": [
+        "VHF FM: (1) x Ross - DSC 500",
+        "VHF AM (Aviation/SAR): (1) x Bendix-King - KY196",
+        "HF Radio: (1) x Motorola - Micom",
+        "VHF Direction Finder: (1) x JMC - DF5500"
+      ]
+    },
+    "source_url": "https://inter-j02.dfo-mpo.gc.ca/fdat/vessels/29"
+  },
+  {
+    "id": "ccgs-cape-fox",
+    "name": "CCGS Cape Fox",
+    "mmsi": "316002527",
+    "region": "Atlantic",
+    "home_port": "Lark Harbour, NL",
+    "home_lat": 49.1028,
+    "home_lon": -58.3686,
+    "year_built": 2002,
+    "specs": {
+      "length_m": 14.6,
+      "max_speed_kt": 25,
+      "range_nm": 200,
+      "crew": 4
+    },
+    "equipment": {
+      "propulsion": [
+        "Main Engines: (2) x Caterpillar - 3196",
+        "Drive: Geared Diesel (671 kW)",
+        "Propellers: (2) x Fixed Pitch",
+        "Generators: (2) x Shaft Generator",
+        "Generators: (2) x Alternator"
+      ],
+      "navigation": [
+        "Radar: Raymarine - E Series - X Band",
+        "ECS: (1) x ICAN Aldebaran II",
+        "Autopilot: (1) x Comnav 2001",
+        "GPS: (1) x Magnavox - MX400B",
+        "GPS: (1) x SAAB - R4 (AIS)",
+        "Gyrocompass: (1) x Anschutz - Gyrostar II",
+        "Depth Sounder: (1) x Si-Tex Koden - CVS 108",
+        "Depth Sounder: (1) x Datamarine - 3000"
+      ],
+      "communications": [
+        "VHF FM: (1) x McMurdo - F1-DSC",
+        "VHF FM: (1) x Motorola - Astro Spectra",
+        "VHF AM (Aviation/SAR): (1) x Bendix-King - KY196",
+        "HF Radio: (1) x Motorola - Micom",
+        "VHF Direction Finder: (1) x OAR - Cubic DF4400"
+      ]
+    },
+    "source_url": "https://inter-j02.dfo-mpo.gc.ca/fdat/vessels/30"
+  },
+  {
+    "id": "ccgs-cape-hearne",
+    "name": "CCGS Cape Hearne",
+    "mmsi": "316003285",
+    "region": "Central",
+    "home_port": "Kingston, ON",
+    "home_lat": 44.2281,
+    "home_lon": -76.4792,
+    "year_built": 2005,
+    "specs": {
+      "length_m": 14.6,
+      "max_speed_kt": 25,
+      "range_nm": 200,
+      "crew": 4
+    },
+    "equipment": {
+      "propulsion": [
+        "Main Engines: (2) x Caterpillar - 3196",
+        "Drive: Geared Diesel (671 kW)",
+        "Propellers: (2) x Fixed Pitch",
+        "Generators: (2) x Shaft Generator",
+        "Generators: (2) x Alternator"
+      ],
+      "navigation": [
+        "Radar: Furuno - 1942 - X Band",
+        "ECS: (1) x ICAN Aldebaran II",
+        "Autopilot: (1) x Comnav 2001",
+        "GPS: (1) x Magnavox - MX400B",
+        "GPS: (1) x SAAB - R4 (AIS)",
+        "Gyrocompass: (1) x Anschutz - Gyrostar II",
+        "Depth Sounder: (1) x Si-Tex Koden - CVS 106",
+        "Depth Sounder: (1) x Datamarine - 3000"
+      ],
+      "communications": [
+        "VHF FM: (1) x Ross - DSC 500",
+        "VHF AM (Aviation/SAR): (1) x Bendix-King - KY196",
+        "HF Radio: (1) x Motorola - Micom",
+        "VHF Direction Finder: (1) x JMC - DF5500"
+      ]
+    },
+    "source_url": "https://inter-j02.dfo-mpo.gc.ca/fdat/vessels/31"
+  },
+  {
+    "id": "ccgs-cape-kuper",
+    "name": "CCGS Cape Kuper",
+    "mmsi": "316006922",
+    "region": "Western",
+    "home_port": "Ganges, BC",
+    "home_lat": 48.8539,
+    "home_lon": -123.4986,
+    "year_built": 2005,
+    "specs": {
+      "length_m": 14.6,
+      "max_speed_kt": 25,
+      "range_nm": 200,
+      "crew": 4
+    },
+    "equipment": {
+      "propulsion": [
+        "Main Engines: (2) x Caterpillar - 3196",
+        "Drive: Geared Diesel (671 kW)",
+        "Propellers: (2) x Fixed Pitch",
+        "Generators: (2) x Shaft Generator",
+        "Generators: (2) x Alternator"
+      ],
+      "navigation": [
+        "Radar: Furuno - 1942 - X Band",
+        "ECS: (1) x ICAN Aldebaran II",
+        "Autopilot: (1) x Comnav 2001",
+        "GPS: (1) x Magnavox - MX400B",
+        "Gyrocompass: (1) x Anschutz - Gyrostar II",
+        "Depth Sounder: (1) x Si-Tex Koden - CVS 106",
+        "Depth Sounder: (1) x Datamarine - 3000"
+      ],
+      "communications": [
+        "VHF FM: (1) x Ross - DSC 500",
+        "VHF AM (Aviation/SAR): (1) x Bendix-King - KY196",
+        "HF Radio: (1) x Motorola - Micom",
+        "VHF Direction Finder: (1) x JMC - DF5500"
+      ]
+    },
+    "source_url": "https://inter-j02.dfo-mpo.gc.ca/fdat/vessels/33"
+  },
+  {
+    "id": "ccgs-cape-lambton",
+    "name": "CCGS Cape Lambton",
+    "mmsi": "316005379",
+    "region": "Central",
+    "home_port": "Sarnia, ON",
+    "home_lat": 42.9742,
+    "home_lon": -82.4092,
+    "year_built": 1999,
+    "specs": {
+      "length_m": 14.6,
+      "max_speed_kt": 25,
+      "range_nm": 200,
+      "crew": 4
+    },
+    "equipment": {
+      "propulsion": [
+        "Main Engines: (2) x Caterpillar - 3196",
+        "Drive: Geared Diesel (671 kW)",
+        "Propellers: (2) x Fixed Pitch",
+        "Generators: (2) x Shaft Generator",
+        "Generators: (2) x Alternator"
+      ],
+      "navigation": [
+        "Radar: Raymarine - E Series - X Band",
+        "ECS: (1) x ICAN Aldebaran II",
+        "Autopilot: (1) x Comnav 2001",
+        "GPS: (1) x SAAB - R4 (AIS)",
+        "Gyrocompass: (1) x Anschutz - Gyrostar II"
+      ],
+      "communications": [
+        "VHF FM: (1) x McMurdo - F1-DSC",
+        "VHF FM: (1) x Icom - IC-M502",
+        "VHF AM (Aviation/SAR): (1) x Bendix-King - KY196",
+        "HF Radio: (1) x Motorola - Micom",
+        "VHF Direction Finder: (1) x OAR - Cubic DF4400"
+      ]
+    },
+    "source_url": "https://inter-j02.dfo-mpo.gc.ca/fdat/vessels/34"
+  },
+  {
+    "id": "ccgs-cape-mckay",
+    "name": "CCGS Cape McKay",
+    "mmsi": "316004106",
+    "region": "Western",
+    "home_port": "Bamfield, BC",
+    "home_lat": 48.8339,
+    "home_lon": -125.1364,
+    "year_built": 2004,
+    "specs": {
+      "length_m": 14.6,
+      "max_speed_kt": 25,
+      "range_nm": 200,
+      "crew": 4
+    },
+    "equipment": {
+      "propulsion": [
+        "Main Engines: (2) x Caterpillar - 3196",
+        "Drive: Geared Diesel (671 kW)",
+        "Propellers: (2) x Fixed Pitch",
+        "Generators: (2) x Shaft Generator",
+        "Generators: (2) x Alternator"
+      ],
+      "navigation": [
+        "Radar: Furuno - 1942 - X Band",
+        "ECS: (1) x ICAN Aldebaran II",
+        "Autopilot: (1) x Comnav 2001",
+        "GPS: (1) x Magnavox - MX400B",
+        "Gyrocompass: (1) x Anschutz - Gyrostar II",
+        "Depth Sounder: (1) x Si-Tex Koden - CVS 106",
+        "Depth Sounder: (1) x Datamarine - 3000"
+      ],
+      "communications": [
+        "VHF FM: (1) x Ross - DSC 500",
+        "VHF AM (Aviation/SAR): (1) x Bendix-King - KY196",
+        "HF Radio: (1) x Motorola - Micom",
+        "VHF Direction Finder: (1) x JMC - DF5500"
+      ]
+    },
+    "source_url": "https://inter-j02.dfo-mpo.gc.ca/fdat/vessels/36"
+  },
+  {
+    "id": "ccgs-cape-mercy",
+    "name": "CCGS Cape Mercy",
+    "mmsi": "316005378",
+    "region": "Central",
+    "home_port": "Cobourg, ON",
+    "home_lat": 43.9547,
+    "home_lon": -78.1667,
+    "year_built": 1999,
+    "specs": {
+      "length_m": 14.6,
+      "max_speed_kt": 25,
+      "range_nm": 200,
+      "crew": 4
+    },
+    "equipment": {
+      "propulsion": [
+        "Main Engines: (2) x Caterpillar - 3196",
+        "Drive: Geared Diesel (671 kW)",
+        "Propellers: (2) x Fixed Pitch",
+        "Generators: (2) x Shaft Generator",
+        "Generators: (2) x Alternator"
+      ],
+      "navigation": [
+        "Radar: Raymarine - E Series - X Band",
+        "ECS: (1) x ICAN Aldebaran II",
+        "Autopilot: (1) x Comnav 2001",
+        "GPS: (1) x Magnavox - MX400B",
+        "GPS: (1) x SAAB - R4 (AIS)",
+        "Gyrocompass: (1) x Anschutz - Gyrostar II",
+        "Depth Sounder: (1) x Si-Tex Koden - CVS 108",
+        "Depth Sounder: (1) x Raymarine - ST60"
+      ],
+      "communications": [
+        "VHF FM: (1) x McMurdo - F1-DSC",
+        "VHF AM (Aviation/SAR): (1) x Bendix-King - KY196",
+        "HF Radio: (1) x Motorola - Micom",
+        "VHF Direction Finder: (1) x OAR - Cubic DF4400"
+      ]
+    },
+    "source_url": "https://inter-j02.dfo-mpo.gc.ca/fdat/vessels/37"
+  },
+  {
+    "id": "ccgs-cape-mudge",
+    "name": "CCGS Cape Mudge",
+    "mmsi": "316002986",
+    "region": "Western",
+    "home_port": "Sandspit, BC",
+    "home_lat": 53.2542,
+    "home_lon": -131.8153,
+    "year_built": 2003,
+    "specs": {
+      "length_m": 14.6,
+      "max_speed_kt": 25,
+      "range_nm": 200,
+      "crew": 4
+    },
+    "equipment": {
+      "propulsion": [
+        "Main Engines: (2) x Caterpillar - 3196",
+        "Drive: Geared Diesel (671 kW)",
+        "Propellers: (2) x Fixed Pitch",
+        "Generators: (2) x Shaft Generator",
+        "Generators: (2) x Alternator"
+      ],
+      "navigation": [
+        "Radar: Raymarine - E Series - X Band",
+        "ECS: (1) x ICAN Aldebaran II",
+        "ECS: (1) x Nobletec Admiral Series",
+        "Autopilot: (1) x Comnav 2001",
+        "GPS: (1) x SAAB - R4 (AIS)",
+        "Gyrocompass: (1) x Anschutz - Gyrostar II",
+        "Depth Sounder: (1) x Si-Tex Koden - CVS 108",
+        "Depth Sounder: (1) x Raymarine - ST60"
+      ],
+      "communications": [
+        "VHF FM: (1) x McMurdo - F1-DSC",
+        "VHF FM: (1) x Icom - IC-M502",
+        "VHF FM: (1) x Motorola - Astro Spectra",
+        "VHF AM (Aviation/SAR): (1) x Bendix-King - KY196",
+        "HF Radio: (1) x Motorola - Micom",
+        "VHF Direction Finder: (1) x OAR - Cubic DF4400"
+      ]
+    },
+    "source_url": "https://inter-j02.dfo-mpo.gc.ca/fdat/vessels/38"
+  },
+  {
+    "id": "ccgs-cape-naden",
+    "name": "CCGS Cape Naden",
+    "mmsi": "316017162",
+    "region": "Western",
+    "home_port": "Masset, BC",
+    "home_lat": 54.0114,
+    "home_lon": -132.1478,
+    "year_built": 2010,
+    "specs": {
+      "length_m": 14.6,
+      "max_speed_kt": 25,
+      "range_nm": 200,
+      "crew": 4
+    },
+    "equipment": {
+      "propulsion": [
+        "Main Engines: (2) x Caterpillar - C12",
+        "Drive: Geared Diesel (671 kW)",
+        "Propellers: (2) x Fixed Pitch",
+        "Generators: (2) x Shaft Generator",
+        "Generators: (2) x Alternator"
+      ],
+      "navigation": [
+        "Radar: Raymarine - E Series - X Band",
+        "ECS: (1) x ICAN Aldebaran II",
+        "Autopilot: (1) x Comnav 2001",
+        "GPS: (1) x Magnavox - MX400B",
+        "GPS: (1) x SAAB - R4 (AIS)",
+        "Gyrocompass: (1) x Sperry - SR2100",
+        "Depth Sounder: (1) x Si-Tex Koden - CVS 118",
+        "Depth Sounder: (1) x Raymarine - ST70"
+      ],
+      "communications": [
+        "VHF FM: (1) x Ross - DSC 500",
+        "VHF FM: (1) x Motorola - XTL-5000",
+        "VHF FM: (2) x Icom - IC-M604",
+        "VHF AM (Aviation/SAR): (1) x Bendix-King - KY196",
+        "HF Radio: (1) x Motorola - Micom",
+        "VHF Direction Finder: (1) x OAR - Cubic DF4400"
+      ]
+    },
+    "source_url": "https://inter-j02.dfo-mpo.gc.ca/fdat/vessels/39"
+  },
+  {
+    "id": "ccgs-cape-norman",
+    "name": "CCGS Cape Norman",
+    "mmsi": "316002528",
+    "region": "Atlantic",
+    "home_port": "Port au Choix, NL",
+    "home_lat": 50.7108,
+    "home_lon": -57.3592,
+    "year_built": 2002,
+    "specs": {
+      "length_m": 14.6,
+      "max_speed_kt": 25,
+      "range_nm": 200,
+      "crew": 4
+    },
+    "equipment": {
+      "propulsion": [
+        "Main Engines: (2) x Caterpillar - 3196",
+        "Drive: Geared Diesel (671 kW)",
+        "Propellers: (2) x Fixed Pitch",
+        "Generators: (2) x Shaft Generator",
+        "Generators: (2) x Alternator"
+      ],
+      "navigation": [
+        "Radar: Raymarine - E Series - X Band",
+        "ECS: (1) x ICAN Aldebaran II",
+        "Autopilot: (1) x Comnav 2001",
+        "GPS: (1) x Magnavox - MX400B",
+        "GPS: (1) x SAAB - R4 (AIS)",
+        "Gyrocompass: (1) x Anschutz - Gyrostar II",
+        "Depth Sounder: (1) x Si-Tex Koden - CVS 108",
+        "Depth Sounder: (1) x Raymarine - ST60"
+      ],
+      "communications": [
+        "VHF FM: (1) x McMurdo - F1-DSC",
+        "VHF FM: (1) x Icom - IC-M504",
+        "VHF FM: (1) x Motorola - Astro Spectra",
+        "VHF AM (Aviation/SAR): (1) x Bendix-King - KY196",
+        "HF Radio: (1) x Motorola - Micom",
+        "VHF Direction Finder: (1) x OAR - Cubic DF4400"
+      ]
+    },
+    "source_url": "https://inter-j02.dfo-mpo.gc.ca/fdat/vessels/40"
+  },
+  {
+    "id": "ccgs-cape-palmerston",
+    "name": "CCGS Cape Palmerston",
+    "mmsi": "316017163",
+    "region": "Western",
+    "home_port": "Prince Rupert, BC",
+    "home_lat": 54.3122,
+    "home_lon": -130.3275,
+    "year_built": 2011,
+    "specs": {
+      "length_m": 14.6,
+      "max_speed_kt": 25,
+      "range_nm": 200,
+      "crew": 4
+    },
+    "equipment": {
+      "propulsion": [
+        "Main Engines: (2) x Caterpillar - C12",
+        "Drive: Geared Diesel (671 kW)",
+        "Propellers: (2) x Fixed Pitch",
+        "Generators: (2) x Shaft Generator",
+        "Generators: (2) x Alternator"
+      ],
+      "navigation": [
+        "Radar: Raymarine - E Series - X Band",
+        "ECS: (1) x ICAN Aldebaran II",
+        "Autopilot: (1) x Comnav 2001",
+        "Gyrocompass: (1) x Sperry - SR2100",
+        "Depth Sounder: (1) x Si-Tex Koden - CVS 118",
+        "Depth Sounder: (1) x Raymarine - ST70"
+      ],
+      "communications": [
+        "VHF FM: (1) x Ross - DSC 500",
+        "VHF FM: (1) x Motorola - XTL-5000",
+        "VHF FM: (2) x Icom - IC-M604",
+        "HF Radio: (1) x Motorola - Micom",
+        "VHF Direction Finder: (1) x OAR - Cubic DF4400"
+      ]
+    },
+    "source_url": "https://inter-j02.dfo-mpo.gc.ca/fdat/vessels/41"
+  },
+  {
+    "id": "ccgs-cape-providence",
+    "name": "CCGS Cape Providence",
+    "mmsi": "316005375",
+    "region": "Central",
+    "home_port": "Meaford, ON",
+    "home_lat": 44.6089,
+    "home_lon": -80.5892,
+    "year_built": 2004,
+    "specs": {
+      "length_m": 14.6,
+      "max_speed_kt": 25,
+      "range_nm": 200,
+      "crew": 4
+    },
+    "equipment": {
+      "propulsion": [
+        "Main Engines: (2) x Caterpillar - 3196",
+        "Drive: Geared Diesel (671 kW)",
+        "Propellers: (2) x Fixed Pitch",
+        "Generators: (2) x Shaft Generator",
+        "Generators: (2) x Alternator"
+      ],
+      "navigation": [
+        "Radar: Raymarine - E Series - X Band",
+        "ECS: (1) x ICAN Aldebaran II",
+        "Autopilot: (1) x Comnav 2001",
+        "GPS: (1) x Magnavox - MX400B",
+        "GPS: (1) x SAAB - R4 (AIS)",
+        "Gyrocompass: (1) x Anschutz - Gyrostar II",
+        "Depth Sounder: (1) x Si-Tex Koden - CVS 106",
+        "Depth Sounder: (1) x Datamarine - 3000"
+      ],
+      "communications": [
+        "VHF FM: (1) x Ross - DSC 500",
+        "VHF FM: (1) x Icom - IC-M604",
+        "VHF AM (Aviation/SAR): (1) x Bendix-King - KY196",
+        "HF Radio: (1) x Motorola - Micom"
+      ]
+    },
+    "source_url": "https://inter-j02.dfo-mpo.gc.ca/fdat/vessels/42"
+  },
+  {
+    "id": "ccgs-cape-rescue",
+    "name": "CCGS Cape Rescue",
+    "mmsi": "316017159",
+    "region": "Central",
+    "home_port": "Port Dover, ON",
+    "home_lat": 42.7836,
+    "home_lon": -80.2014,
+    "year_built": 2010,
+    "specs": {
+      "length_m": 14.6,
+      "max_speed_kt": 25,
+      "range_nm": 200,
+      "crew": 4
+    },
+    "equipment": {
+      "propulsion": [
+        "Main Engines: (2) x Caterpillar - C12",
+        "Drive: Geared Diesel (678 kW)",
+        "Propellers: (2) x Fixed Pitch",
+        "Generators: (2) x Shaft Generator",
+        "Generators: (2) x Alternator"
+      ],
+      "navigation": [
+        "Radar: Raymarine - E Series - X Band",
+        "ECS: (1) x ICAN Aldebaran II",
+        "Autopilot: (1) x Comnav 2001",
+        "GPS: (1) x SAAB - R4 (AIS)",
+        "Gyrocompass: (1) x Sperry - SR2100",
+        "Depth Sounder: (1) x Si-Tex Koden - CVS 118",
+        "Depth Sounder: (1) x Raymarine - ST70"
+      ],
+      "communications": [
+        "VHF FM: (1) x Motorola - XTL-5000",
+        "VHF FM: (2) x Icom - IC-M604",
+        "VHF AM (Aviation/SAR): (1) x Bendix-King - KY196",
+        "HF Radio: (1) x Motorola - Micom",
+        "VHF Direction Finder: (1) x OAR - Cubic DF4400"
+      ]
+    },
+    "source_url": "https://inter-j02.dfo-mpo.gc.ca/fdat/vessels/43"
+  },
+  {
+    "id": "ccgs-cape-spry",
+    "name": "CCGS Cape Spry",
+    "mmsi": "316004846",
+    "region": "Atlantic",
+    "home_port": "Souris, PE",
+    "home_lat": 46.3514,
+    "home_lon": -62.2519,
+    "year_built": 2003,
+    "specs": {
+      "length_m": 14.6,
+      "max_speed_kt": 25,
+      "range_nm": 200,
+      "crew": 4
+    },
+    "equipment": {
+      "propulsion": [
+        "Main Engines: (2) x Caterpillar - 3196",
+        "Drive: Geared Diesel (671 kW)",
+        "Propellers: (2) x Fixed Pitch",
+        "Generators: (2) x Shaft Generator",
+        "Generators: (2) x Alternator"
+      ],
+      "navigation": [
+        "Radar: Furuno - 1942 - X Band",
+        "ECS: (1) x ICAN Aldebaran II",
+        "Autopilot: (1) x Comnav 2001",
+        "GPS: (1) x Magnavox - MX400B",
+        "Gyrocompass: (1) x Anschutz - Gyrostar II",
+        "Depth Sounder: (1) x Si-Tex Koden - CVS 106"
+      ],
+      "communications": [
+        "VHF FM: (1) x Ross - DSC 500",
+        "VHF AM (Aviation/SAR): (1) x Bendix-King - KY196",
+        "HF Radio: (1) x Motorola - Micom",
+        "VHF Direction Finder: (1) x JMC - DF5500"
+      ]
+    },
+    "source_url": "https://inter-j02.dfo-mpo.gc.ca/fdat/vessels/45"
+  },
+  {
+    "id": "ccgs-cape-st-james",
+    "name": "CCGS Cape St. James",
+    "mmsi": "316001476",
+    "region": "Western",
+    "home_port": "Kitsilano (Vancouver), BC",
+    "home_lat": 49.2764,
+    "home_lon": -123.1536,
+    "year_built": 1998,
+    "specs": {
+      "length_m": 14.6,
+      "max_speed_kt": 25,
+      "range_nm": 200,
+      "crew": 4
+    },
+    "equipment": {
+      "propulsion": [
+        "Main Engines: (2) x Caterpillar - 3196",
+        "Drive: Geared Diesel (671 kW)",
+        "Propellers: (2) x Fixed Pitch",
+        "Generators: (2) x Shaft Generator",
+        "Generators: (2) x Alternator"
+      ],
+      "navigation": [
+        "Radar: Furuno - 1942 - X Band",
+        "ECS: (1) x ICAN Aldebaran II",
+        "Autopilot: (1) x Comnav 2001",
+        "GPS: (1) x Magnavox - MX400B",
+        "Gyrocompass: (1) x Anschutz - Gyrostar II",
+        "Depth Sounder: (1) x Si-Tex Koden - CVS 106",
+        "Depth Sounder: (1) x Datamarine - 3000"
+      ],
+      "communications": [
+        "VHF FM: (1) x Ross - DSC 500",
+        "VHF AM (Aviation/SAR): (1) x Bendix-King - KY196",
+        "HF Radio: (1) x Motorola - Micom",
+        "VHF Direction Finder: (1) x JMC - DF5500"
+      ]
+    },
+    "source_url": "https://inter-j02.dfo-mpo.gc.ca/fdat/vessels/46"
+  },
+  {
+    "id": "ccgs-cape-storm",
+    "name": "CCGS Cape Storm",
+    "mmsi": "316005377",
+    "region": "Central",
+    "home_port": "Port Weller, ON",
+    "home_lat": 43.2356,
+    "home_lon": -79.2186,
+    "year_built": 1999,
+    "specs": {
+      "length_m": 14.6,
+      "max_speed_kt": 25,
+      "range_nm": 200,
+      "crew": 4
+    },
+    "equipment": {
+      "propulsion": [
+        "Drive: Geared Diesel (671 kW)",
+        "Propellers: (2) x Fixed Pitch"
+      ],
+      "navigation": [
+        "Radar: Raymarine - E Series - X Band",
+        "ECS: (1) x ICAN Aldebaran II",
+        "Autopilot: (1) x Comnav 2001",
+        "GPS: (1) x SAAB - R4 (AIS)",
+        "Gyrocompass: (1) x Anschutz - Gyrostar II",
+        "Depth Sounder: (1) x Si-Tex Koden - CVS 106",
+        "Depth Sounder: (1) x Datamarine - 3000"
+      ],
+      "communications": [
+        "VHF FM: (1) x McMurdo - F1-DSC",
+        "VHF FM: (1) x Icom - IC-M504",
+        "VHF AM (Aviation/SAR): (1) x Bendix-King - KY196",
+        "VHF Direction Finder: (1) x OAR - Cubic DF4400"
+      ]
+    },
+    "source_url": "https://inter-j02.dfo-mpo.gc.ca/fdat/vessels/47"
+  },
+  {
+    "id": "ccgs-cape-sutil",
+    "name": "CCGS Cape Sutil",
+    "mmsi": "316001556",
+    "region": "Western",
+    "home_port": "Port Hardy, BC",
+    "home_lat": 50.7231,
+    "home_lon": -127.4917,
+    "year_built": 1997,
+    "specs": {
+      "length_m": 14.6,
+      "max_speed_kt": 25,
+      "range_nm": 200,
+      "crew": 4
+    },
+    "equipment": {
+      "propulsion": [
+        "Main Engines: (2) x Caterpillar - 3196",
+        "Drive: Geared Diesel (671 kW)",
+        "Propellers: (2) x Fixed Pitch",
+        "Generators: (2) x Shaft Generator",
+        "Generators: (2) x Alternator"
+      ],
+      "navigation": [
+        "Radar: Furuno - 1942 - X Band",
+        "ECS: (1) x ICAN Aldebaran II",
+        "ECS: (1) x Nobletec Admiral Series",
+        "Autopilot: (1) x Comnav 2001",
+        "GPS: (1) x Magnavox - MX400B",
+        "GPS: (1) x SAAB - R4 (AIS)",
+        "Gyrocompass: (1) x Anschutz - Gyrostar II",
+        "Depth Sounder: (1) x Si-Tex Koden - CVS 108",
+        "Depth Sounder: (1) x Datamarine - 3000"
+      ],
+      "communications": [
+        "VHF FM: (1) x McMurdo - F1-DSC",
+        "VHF AM (Aviation/SAR): (1) x Bendix-King - KY196",
+        "HF Radio: (1) x Motorola - Micom",
+        "VHF Direction Finder: (1) x OAR - Cubic DF4400"
+      ]
+    },
+    "source_url": "https://inter-j02.dfo-mpo.gc.ca/fdat/vessels/48"
+  },
+  {
+    "id": "ccgs-thunder-cape",
+    "name": "CCGS Thunder Cape",
+    "mmsi": "316005382",
+    "region": "Central",
+    "home_port": "Parry Sound, ON",
+    "home_lat": 45.3392,
+    "home_lon": -80.0369,
+    "year_built": 2000,
+    "specs": {
+      "length_m": 14.6,
+      "max_speed_kt": 25,
+      "range_nm": 200,
+      "crew": 4
+    },
+    "equipment": {
+      "propulsion": [
+        "Main Engines: (2) x Caterpillar - 3196",
+        "Drive: Geared Diesel (675 kW)",
+        "Propellers: (2) x Fixed Pitch",
+        "Generators: (2) x Shaft Generator",
+        "Generators: (2) x Alternator"
+      ],
+      "navigation": [
+        "Radar: Furuno - 1942 - X Band",
+        "ECS: (1) x ICAN Aldebaran II",
+        "Autopilot: (1) x Comnav 2001",
+        "GPS: (1) x Magnavox - MX400B",
+        "Gyrocompass: (1) x Anschutz - Gyrostar II",
+        "Depth Sounder: (1) x Si-Tex Koden - CVS 106",
+        "Depth Sounder: (1) x Datamarine - 3000"
+      ],
+      "communications": [
+        "VHF FM: (1) x Ross - DSC 500",
+        "VHF AM (Aviation/SAR): (1) x Bendix-King - KY196",
+        "HF Radio: (1) x Motorola - Micom",
+        "VHF Direction Finder: (1) x JMC - DF5500"
+      ]
+    },
+    "source_url": "https://inter-j02.dfo-mpo.gc.ca/fdat/vessels/109"
+  }
+]

@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#060b14" />
+  <meta name="description" content="Near-real-time maritime tracking dashboard for the Canadian Coast Guard (CCG) 47-ft Cape Class Motor Lifeboat SAR fleet." />
+  <title>CCG 47-ft Cape Class Fleet Tracker | Canadian SAR Maritime Dashboard</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- MapLibre GL JS (CDN, zero build step) -->
+  <link href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css" rel="stylesheet" />
+  <script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js" defer></script>
+
+  <!-- Turf.js for dynamic 200 NM SAR geodesic range rings -->
+  <script src="https://unpkg.com/@turf/turf@7.1.0/turf.min.js" defer></script>
+
+  <link rel="stylesheet" href="style.css" />
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <div class="app-shell">
+    <!-- Top Tactical Summary Bar -->
+    <header class="topbar" role="banner">
+      <div class="brand-group">
+        <button id="mobile-menu-btn" class="icon-btn mobile-only" type="button" aria-label="Toggle fleet & layer controls" aria-expanded="false">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M3 6h18M3 12h18M3 18h18" stroke-linecap="round"/>
+          </svg>
+        </button>
+        <div class="brand-emblem" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="12" r="9.5" stroke="#22d3ee" stroke-width="1.5" stroke-dasharray="3 2" />
+            <path d="M12 4L15.8 18L12 15.2L8.2 18L12 4Z" fill="#22d3ee" />
+          </svg>
+        </div>
+        <div class="brand-titles">
+          <h1>CCG CAPE CLASS <span class="brand-accent">SAR TRACKER</span></h1>
+          <p class="brand-subtitle">47-ft Motor Lifeboat Fleet &bull; Public AIS &amp; FDAT Registry</p>
+        </div>
+      </div>
+
+      <div class="summary-strip" role="region" aria-label="Fleet status summary">
+        <button class="kpi-pill" type="button" data-status-shortcut="all" title="Show all Cape Class lifeboats">
+          <span class="kpi-label">Total Fleet</span>
+          <span id="kpi-total" class="kpi-value">--</span>
+        </button>
+        <button class="kpi-pill kpi-active" type="button" data-status-shortcut="active" title="Filter Active / Recent (< 2 hours)">
+          <span class="status-dot dot-active"></span>
+          <span class="kpi-label">Active / Recent</span>
+          <span id="kpi-active" class="kpi-value">--</span>
+        </button>
+        <button class="kpi-pill kpi-last-known" type="button" data-status-shortcut="last_known" title="Filter Last Known (2 hours – 7 days)">
+          <span class="status-dot dot-last-known"></span>
+          <span class="kpi-label">Last Known</span>
+          <span id="kpi-last-known" class="kpi-value">--</span>
+        </button>
+        <button class="kpi-pill kpi-fallback" type="button" data-status-shortcut="fallback" title="Filter Home Port Fallback (> 7 days or no AIS)">
+          <span class="status-dot dot-fallback"></span>
+          <span class="kpi-label">Home Port</span>
+          <span id="kpi-fallback" class="kpi-value">--</span>
+        </button>
+        <div class="updated-block">
+          <div class="updated-row">
+            <span class="kpi-label">Last Updated</span>
+            <span id="feed-mode-badge" class="feed-badge" hidden>AIS</span>
+          </div>
+          <time id="last-updated" class="updated-time">Loading...</time>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Tactical Workspace -->
+    <div class="workspace">
+      <!-- Left Control & Roster Panel -->
+      <aside id="sidebar" class="sidebar" aria-label="Fleet filters, map layers, and vessel roster">
+        <!-- Search & Filters -->
+        <section class="panel-section">
+          <div class="search-box">
+            <svg class="search-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"></circle>
+              <path d="M21 21l-4.35-4.35" stroke-linecap="round"></path>
+            </svg>
+            <input
+              id="search-input"
+              type="search"
+              placeholder="Search vessel, home port, or MMSI..."
+              autocomplete="off"
+              aria-label="Search by vessel name, home port, or MMSI"
+            />
+            <button id="clear-search-btn" class="clear-btn" type="button" aria-label="Clear search" hidden>&times;</button>
+          </div>
+
+          <div class="filter-group">
+            <span class="filter-label">CCG Region</span>
+            <div id="region-filters" class="segmented-control" role="group" aria-label="Filter by CCG region">
+              <button type="button" class="seg-btn active" data-region="All">All</button>
+              <button type="button" class="seg-btn" data-region="Atlantic">Atlantic</button>
+              <button type="button" class="seg-btn" data-region="Central">Central</button>
+              <button type="button" class="seg-btn" data-region="Western">Western</button>
+            </div>
+          </div>
+
+          <div class="filter-group">
+            <span class="filter-label">AIS Telemetry Tier</span>
+            <div id="status-filters" class="segmented-control segmented-status" role="group" aria-label="Filter by AIS status">
+              <button type="button" class="seg-btn active" data-status="all">All</button>
+              <button type="button" class="seg-btn" data-status="active">Active</button>
+              <button type="button" class="seg-btn" data-status="last_known">Last Known</button>
+              <button type="button" class="seg-btn" data-status="fallback">Home Port</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- Map Layers Toggle Panel -->
+        <details class="panel-section layers-details" open>
+          <summary class="section-header">
+            <span>Chart &amp; Weather Layers</span>
+            <svg class="chevron-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </summary>
+          <div class="layer-toggles">
+            <label class="toggle-row">
+              <span class="toggle-info">
+                <span class="toggle-title">Dark Tactical Basemap</span>
+                <span class="toggle-meta">CARTO Dark Matter GL</span>
+              </span>
+              <input id="toggle-basemap" type="checkbox" checked />
+              <span class="toggle-switch"></span>
+            </label>
+
+            <label class="toggle-row">
+              <span class="toggle-info">
+                <span class="toggle-title">200 NM SAR Range Rings</span>
+                <span class="toggle-meta">Turf.js geodesic station coverage</span>
+              </span>
+              <input id="toggle-range-rings" type="checkbox" checked />
+              <span class="toggle-switch"></span>
+            </label>
+
+            <label class="toggle-row">
+              <span class="toggle-info">
+                <span class="toggle-title">OpenSeaMap Seamarks</span>
+                <span class="toggle-meta">Buoys, beacons &amp; lights</span>
+              </span>
+              <input id="toggle-seamarks" type="checkbox" checked />
+              <span class="toggle-switch"></span>
+            </label>
+
+            <label class="toggle-row">
+              <span class="toggle-info">
+                <span class="toggle-title">ECCC Marine / Surface Wind</span>
+                <span id="wind-layer-status" class="toggle-meta">MSC GeoMet WMS (10m wind)</span>
+              </span>
+              <input id="toggle-wind" type="checkbox" />
+              <span class="toggle-switch"></span>
+            </label>
+
+            <label class="toggle-row">
+              <span class="toggle-info">
+                <span class="toggle-title">CIS Sea Ice Coverage</span>
+                <span id="ice-layer-status" class="toggle-meta">MSC GeoMet WMS (ice conc.)</span>
+              </span>
+              <input id="toggle-ice" type="checkbox" />
+              <span class="toggle-switch"></span>
+            </label>
+          </div>
+        </details>
+
+        <!-- Fleet Roster -->
+        <section class="roster-section">
+          <div class="roster-header">
+            <span id="roster-count" class="roster-count">36 Vessels</span>
+            <button id="fit-bounds-btn" class="link-btn" type="button" title="Zoom map to visible vessels">Reset View</button>
+          </div>
+          <div id="vessel-list" class="vessel-list" role="list">
+            <!-- Populated dynamically by app.js -->
+          </div>
+        </section>
+      </aside>
+
+      <!-- Map Canvas -->
+      <main class="map-stage">
+        <div id="map" aria-label="Interactive Canadian Coast Guard Cape Class Maritime Map"></div>
+
+        <!-- Map Legend & Cursor Coordinates HUD -->
+        <div class="map-hud-bottom">
+          <div class="map-legend" aria-label="Vessel marker legend">
+            <div class="legend-item">
+              <span class="legend-arrow"></span>
+              <span>Active (&lt;2h)</span>
+            </div>
+            <div class="legend-item">
+              <span class="legend-diamond"></span>
+              <span>Last Known (2h–7d)</span>
+            </div>
+            <div class="legend-item">
+              <span class="legend-circle"></span>
+              <span>Home Port (&gt;7d / No AIS)</span>
+            </div>
+            <div class="legend-item">
+              <span class="legend-ring"></span>
+              <span>200 NM SAR Range</span>
+            </div>
+          </div>
+          <div id="cursor-coords" class="cursor-coords" aria-live="off">
+            48°00.0'N &nbsp; 094°30.0'W
+          </div>
+        </div>
+      </main>
+
+      <!-- Slide-Over Vessel Detail Drawer -->
+      <aside id="detail-drawer" class="detail-drawer" aria-label="Selected vessel details" aria-hidden="true">
+        <div class="drawer-header">
+          <div>
+            <div class="drawer-badges">
+              <span id="drawer-status-badge" class="tier-badge">--</span>
+              <span id="drawer-region-badge" class="region-badge">--</span>
+            </div>
+            <h2 id="drawer-vessel-name" class="drawer-title">Select a Vessel</h2>
+            <p id="drawer-mmsi-line" class="drawer-subtitle">MMSI: --</p>
+          </div>
+          <button id="close-drawer-btn" class="icon-btn" type="button" aria-label="Close vessel details">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="18" y1="6" x2="6" y2="18" stroke-linecap="round"></line>
+              <line x1="6" y1="6" x2="18" y2="18" stroke-linecap="round"></line>
+            </svg>
+          </button>
+        </div>
+
+        <div class="drawer-body">
+          <!-- Live Telemetry Block -->
+          <section class="drawer-card">
+            <h3 class="card-heading">AIS Position &amp; Telemetry</h3>
+            <div class="telemetry-grid">
+              <div class="tele-cell">
+                <span class="tele-label">SOG (Speed)</span>
+                <span id="drawer-sog" class="tele-val mono">--</span>
+              </div>
+              <div class="tele-cell">
+                <span class="tele-label">COG / Heading</span>
+                <span id="drawer-cog" class="tele-val mono">--</span>
+              </div>
+              <div class="tele-cell tele-wide">
+                <span class="tele-label">Navigational Status</span>
+                <span id="drawer-nav-status" class="tele-val">--</span>
+              </div>
+              <div class="tele-cell tele-wide">
+                <span class="tele-label">Position Coordinates</span>
+                <span id="drawer-coords" class="tele-val mono">--</span>
+                <span id="drawer-coords-dms" class="tele-sub mono">--</span>
+              </div>
+              <div class="tele-cell tele-wide">
+                <span class="tele-label">Last AIS Report</span>
+                <span id="drawer-ais-time" class="tele-val mono">--</span>
+                <span id="drawer-ais-rel" class="tele-sub">--</span>
+              </div>
+            </div>
+          </section>
+
+          <!-- Station & Vessel Specifications -->
+          <section class="drawer-card">
+            <h3 class="card-heading">SAR Station &amp; Hull Specifications</h3>
+            <div class="specs-meta-list">
+              <div class="meta-row">
+                <span class="meta-key">Home Port / Station</span>
+                <span id="drawer-home-port" class="meta-val">--</span>
+              </div>
+              <div class="meta-row">
+                <span class="meta-key">Station Coordinates</span>
+                <span id="drawer-home-coords" class="meta-val mono">--</span>
+              </div>
+              <div class="meta-row">
+                <span class="meta-key">Year Built</span>
+                <span id="drawer-year-built" class="meta-val mono">--</span>
+              </div>
+            </div>
+
+            <div class="specs-grid">
+              <div class="spec-box">
+                <span class="spec-num mono" id="drawer-spec-len">14.6 m</span>
+                <span class="spec-lbl">Length (47'11")</span>
+              </div>
+              <div class="spec-box">
+                <span class="spec-num mono" id="drawer-spec-spd">25 kt</span>
+                <span class="spec-lbl">Max Speed</span>
+              </div>
+              <div class="spec-box">
+                <span class="spec-num mono" id="drawer-spec-rng">200 NM</span>
+                <span class="spec-lbl">SAR Range</span>
+              </div>
+              <div class="spec-box">
+                <span class="spec-num mono" id="drawer-spec-crew">4</span>
+                <span class="spec-lbl">SAR Crew</span>
+              </div>
+            </div>
+          </section>
+
+          <!-- Public FDAT Equipment Manifest -->
+          <section class="drawer-card">
+            <h3 class="card-heading">Public CCG FDAT Equipment</h3>
+            <div class="equip-group">
+              <h4>Propulsion &amp; Engineering</h4>
+              <ul id="drawer-eq-propulsion" class="equip-list"></ul>
+            </div>
+            <div class="equip-group">
+              <h4>Navigation Electronics</h4>
+              <ul id="drawer-eq-navigation" class="equip-list"></ul>
+            </div>
+            <div class="equip-group">
+              <h4>Communications Suite</h4>
+              <ul id="drawer-eq-comms" class="equip-list"></ul>
+            </div>
+          </section>
+        </div>
+
+        <div class="drawer-footer">
+          <button id="center-vessel-btn" class="btn btn-secondary" type="button">
+            Center on Map
+          </button>
+          <a id="drawer-fdat-link" class="btn btn-primary" href="#" target="_blank" rel="noopener noreferrer">
+            CCG FDAT Page &nearr;
+          </a>
+        </div>
+      </aside>
+    </div>
+  </div>
+</body>
+</html>
