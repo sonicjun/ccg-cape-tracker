@@ -1,17 +1,17 @@
 {
-  "updated_at_utc": "2026-11-27T15:28:28Z",
+  "updated_at_utc": "2026-11-27T15:37:44Z",
   "source": "aisstream",
   "positions": {
     "316002986": {
       "mmsi": "316002986",
       "vessel_id": "ccgs-cape-mudge",
-      "lat": 53.24152,
-      "lon": -131.9272,
-      "sog": 18.7,
-      "cog": 248.9,
-      "heading": 247,
+      "lat": 53.21533,
+      "lon": -132.0221,
+      "sog": 18.5,
+      "cog": 191.7,
+      "heading": 191,
       "nav_status": "Under way using engine",
-      "timestamp_utc": "2026-11-27T15:29:56Z"
+      "timestamp_utc": "2026-11-27T15:43:56Z"
     },
     "316005377": {
       "mmsi": "316005377",
@@ -27,13 +27,13 @@
     "316017163": {
       "mmsi": "316017163",
       "vessel_id": "ccgs-cape-palmerston",
-      "lat": 50.02225,
+      "lat": 50.02224,
       "lon": -125.2383,
       "sog": 0.0,
-      "cog": 75.1,
-      "heading": 252,
+      "cog": 235.4,
+      "heading": 253,
       "nav_status": "Moored",
-      "timestamp_utc": "2026-11-27T15:32:01Z"
+      "timestamp_utc": "2026-11-27T15:38:02Z"
     }
   }
 }
