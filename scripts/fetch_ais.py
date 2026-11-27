@@ -102,6 +102,8 @@ async def collect_live_ais(
             "PositionReport",
             "StandardClassBPositionReport",
             "ExtendedClassBPositionReport",
+            "ShipStaticData",
+            "StaticDataReport",
         ],
     }
 
@@ -127,7 +129,7 @@ async def collect_live_ais(
                 compression="deflate",  # Enables permessage-deflate extension
                 ping_interval=20,
                 ping_timeout=30,
-                open_timeout=45,
+                open_timeout=60,
                 close_timeout=5,
             ) as ws:
                 await ws.send(json.dumps(subscribe_payload))
@@ -157,11 +159,13 @@ async def collect_live_ais(
                         raise RuntimeError(f"AISStream server error: {err_detail}")
 
                     msg_type = msg.get("MessageType")
-                    if msg_type not in {
+                    is_pos_report = msg_type in {
                         "PositionReport",
                         "StandardClassBPositionReport",
                         "ExtendedClassBPositionReport",
-                    }:
+                    }
+                    is_static_report = msg_type in {"ShipStaticData", "StaticDataReport"}
+                    if not (is_pos_report or is_static_report):
                         continue
 
                     meta = msg.get("MetaData") or {}
@@ -171,8 +175,12 @@ async def collect_live_ais(
                     if mmsi_val not in mmsi_to_vessel:
                         continue
 
-                    lat = pr.get("Latitude", meta.get("latitude"))
-                    lon = pr.get("Longitude", meta.get("longitude"))
+                    # Never overwrite a full PositionReport from this same run with a static-only metadata frame
+                    if is_static_report and mmsi_val in updates:
+                        continue
+
+                    lat = pr.get("Latitude", meta.get("latitude")) if is_pos_report else meta.get("latitude")
+                    lon = pr.get("Longitude", meta.get("longitude")) if is_pos_report else meta.get("longitude")
                     if lat is None or lon is None:
                         continue
                     lat_f, lon_f = float(lat), float(lon)
@@ -180,25 +188,33 @@ async def collect_live_ais(
                     if abs(lat_f) > 90.0 or abs(lon_f) > 180.0 or (lat_f == 0.0 and lon_f == 0.0):
                         continue
 
-                    sog_raw = pr.get("Sog")
-                    sog = round(float(sog_raw), 1) if sog_raw is not None and float(sog_raw) < 102.2 else 0.0
+                    if is_pos_report:
+                        sog_raw = pr.get("Sog")
+                        sog = round(float(sog_raw), 1) if sog_raw is not None and float(sog_raw) < 102.2 else 0.0
 
-                    cog_raw = pr.get("Cog")
-                    cog = (
-                        round(float(cog_raw) % 360.0, 1)
-                        if cog_raw is not None and 0.0 <= float(cog_raw) < 360.0
-                        else 0.0
-                    )
+                        cog_raw = pr.get("Cog")
+                        cog = (
+                            round(float(cog_raw) % 360.0, 1)
+                            if cog_raw is not None and 0.0 <= float(cog_raw) < 360.0
+                            else 0.0
+                        )
 
-                    hdg_raw = pr.get("TrueHeading")
-                    heading = (
-                        int(hdg_raw)
-                        if hdg_raw is not None and 0 <= int(hdg_raw) < 360
-                        else None
-                    )
+                        hdg_raw = pr.get("TrueHeading")
+                        heading = (
+                            int(hdg_raw)
+                            if hdg_raw is not None and 0 <= int(hdg_raw) < 360
+                            else None
+                        )
 
-                    nav_code = int(pr.get("NavigationalStatus", 15))
-                    nav_status = NAV_STATUS_MAP.get(nav_code, "Undefined" if msg_type == "PositionReport" else "Active (Class B)")
+                        nav_code = int(pr.get("NavigationalStatus", 15))
+                        nav_status = NAV_STATUS_MAP.get(
+                            nav_code, "Undefined" if msg_type == "PositionReport" else "Active (Class B)"
+                        )
+                    else:
+                        sog = 0.0
+                        cog = 0.0
+                        heading = None
+                        nav_status = "Transmitting Static AIS"
                     ts_utc = parse_aisstream_timestamp(meta.get("time_utc"))
 
                     vessel = mmsi_to_vessel[mmsi_val]

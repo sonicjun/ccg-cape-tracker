@@ -8,7 +8,7 @@ on:
       duration:
         description: "AISStream listening window in seconds"
         required: false
-        default: "90"
+        default: "240"
 
 permissions:
   contents: write
@@ -20,7 +20,7 @@ concurrency:
 jobs:
   update-ais:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 12
 
     steps:
       - name: Checkout repository
@@ -39,7 +39,7 @@ jobs:
         env:
           AISSTREAM_API_KEY: ${{ secrets.AISSTREAM_API_KEY }}
         run: |
-          DURATION="${{ github.event.inputs.duration || '90' }}"
+          DURATION="${{ github.event.inputs.duration || '240' }}"
           python scripts/fetch_ais.py --duration "$DURATION"
 
       - name: Commit and push data/positions.json if modified
