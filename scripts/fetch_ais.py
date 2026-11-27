@@ -99,7 +99,11 @@ async def collect_live_ais(
         # Global bounding box ensures vessels in transit or refit anywhere are captured alongside MMSI filter
         "BoundingBoxes": [[[-90.0, -180.0], [90.0, 180.0]]],
         "FiltersShipMMSI": mmsi_list,
-        "FilterMessageTypes": ["PositionReport"],
+        "FilterMessageTypes": [
+            "PositionReport",
+            "StandardClassBPositionReport",
+            "ExtendedClassBPositionReport",
+        ],
     }
 
     updates: dict[str, dict[str, Any]] = {}
@@ -146,11 +150,16 @@ async def collect_live_ais(
                         err_detail = msg.get("error") or msg.get("Error")
                         raise RuntimeError(f"AISStream server error: {err_detail}")
 
-                    if msg.get("MessageType") != "PositionReport":
+                    msg_type = msg.get("MessageType")
+                    if msg_type not in {
+                        "PositionReport",
+                        "StandardClassBPositionReport",
+                        "ExtendedClassBPositionReport",
+                    }:
                         continue
 
                     meta = msg.get("MetaData") or {}
-                    pr = (msg.get("Message") or {}).get("PositionReport") or {}
+                    pr = (msg.get("Message") or {}).get(msg_type) or {}
 
                     mmsi_val = str(pr.get("UserID") or meta.get("MMSI") or "").strip()
                     if mmsi_val not in mmsi_to_vessel:
@@ -430,6 +439,10 @@ def main() -> int:
             return 1
         updates = asyncio.run(collect_live_ais(api_key, mmsi_to_vessel, args.duration))
         source = "aisstream"
+        # Do not carry simulated --mock coordinates into live production AIS cache
+        if cache.get("source") == "mock":
+            logger.info("Clearing prior --mock simulation cache before storing live AIS data.")
+            merged_positions = {}
 
     # Merge only vessels that reported during this run; never delete older cached entries
     for mmsi, report in updates.items():
