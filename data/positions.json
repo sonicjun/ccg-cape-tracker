@@ -1,17 +1,17 @@
 {
-  "updated_at_utc": "2026-11-27T23:38:12Z",
+  "updated_at_utc": "2026-11-28T05:55:02Z",
   "source": "aisstream",
   "positions": {
     "316002986": {
       "mmsi": "316002986",
       "vessel_id": "ccgs-cape-mudge",
-      "lat": 53.21533,
-      "lon": -132.0221,
-      "sog": 18.5,
-      "cog": 191.7,
-      "heading": 191,
-      "nav_status": "Under way using engine",
-      "timestamp_utc": "2026-11-27T15:43:56Z"
+      "lat": 53.23807,
+      "lon": -131.8625,
+      "sog": 0.0,
+      "cog": 0.0,
+      "heading": null,
+      "nav_status": "Transmitting Static AIS",
+      "timestamp_utc": "2026-11-28T05:55:56Z"
     },
     "316005377": {
       "mmsi": "316005377",
@@ -30,10 +30,10 @@
       "lat": 50.02224,
       "lon": -125.2383,
       "sog": 0.0,
-      "cog": 235.4,
-      "heading": 253,
-      "nav_status": "Moored",
-      "timestamp_utc": "2026-11-27T15:38:02Z"
+      "cog": 0.0,
+      "heading": null,
+      "nav_status": "Transmitting Static AIS",
+      "timestamp_utc": "2026-11-28T05:56:07Z"
     }
   }
 }
